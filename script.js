@@ -1,4 +1,4 @@
-const test = document.getElementById('test');
+const resultCard = document.getElementById('resultCard');
 const btn = document.getElementById('btn');
 
 let url ='https://api.punkapi.com/v2/beers/random';
@@ -17,7 +17,8 @@ async function fetchMe() {
     let beerTagline = json[0].tagline;
     // need to adjust for when multiple beers get pulled in
     
-    let div = document.createElement('div');
-    div.textContent = `Your beer is: ${beerName}`;
-    test.appendChild(div);
+    let cardDiv = document.createElement('div');
+    cardDiv.textContent = `Your beer is: ${beerName}`;
+    cardDiv.classList.add('result-card');
+    resultCard.appendChild(cardDiv);
     }

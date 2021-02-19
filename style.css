@@ -3,7 +3,7 @@
 /* custom properties */
 
 :root {
-
+    --color-example: #fff;
 }
 
 body {
@@ -21,6 +21,13 @@ header {
     text-align: center;
     background-color: rgba(18, 99, 31, 0.575);
     padding: 0.5em;
+    border-radius: 0 0 10px 10px;
+}
+
+#resultCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #btn {
@@ -34,6 +41,12 @@ header {
     border-radius: 5px;
 }
 
+.result-card {
+    border: 1px solid rgba(18, 99, 31, 0.575);
+    border-radius: 5px;
+    padding: 1em;
+    width: fit-content;
+}
 /* typography */
 
 h4 {
