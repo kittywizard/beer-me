@@ -19,7 +19,7 @@ body {
 
 header {
     text-align: center;
-    background-color: rgba(122, 185, 228, 0.575);
+    background-color: rgba(18, 99, 31, 0.575);
     padding: 0.5em;
 }
 
@@ -29,8 +29,8 @@ header {
     padding: 0.6em;
     margin: 0.5em;
     border: unset;
-    background-color:rgba(122, 185, 228, 0.8);
-    color: #000;
+    background-color:rgba(18, 99, 31, 0.575);
+    color: rgb(240, 239, 239);
     border-radius: 5px;
 }
 
