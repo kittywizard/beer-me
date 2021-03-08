@@ -3,7 +3,7 @@
 /* custom properties */
 
 :root {
-    --color-example: #fff;
+    --green: rgba(18, 99, 31, 0.575);
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 
 header {
     text-align: center;
-    background-color: rgba(18, 99, 31, 0.575);
+    background-color: var(--green);
     padding: 0.5em;
     border-radius: 0 0 10px 10px;
 }
@@ -36,16 +36,22 @@ header {
     padding: 0.6em;
     margin: 0.5em;
     border: unset;
-    background-color:rgba(18, 99, 31, 0.575);
+    background-color: var(--green);
     color: rgb(240, 239, 239);
     border-radius: 5px;
 }
 
 .result-card {
-    border: 1px solid rgba(18, 99, 31, 0.575);
+    border: 1px solid var(--green);
     border-radius: 5px;
     padding: 1em;
     width: fit-content;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }
 /* typography */
 
