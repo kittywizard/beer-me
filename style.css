@@ -59,3 +59,9 @@ h4 {
     margin: 0.4em 0;
     font-size: 1rem; /* adjust font size later */
 }
+
+/* images */
+
+.img-div {
+    height: 100px;
+}
