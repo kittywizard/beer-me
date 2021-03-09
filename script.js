@@ -2,20 +2,41 @@ const resultCard = document.getElementById('resultCard');
 const testBtn = document.getElementById('test-btn');
 const pages = document.querySelector(".page-card"); //for turning them on and off
 
-//pull in the forms 
+//forms and form related nonsense
 const abvForm = document.getElementById("ABV-form");
 const ibuForm = document.getElementById("IBU-form");
 const pageForm = document.getElementById("page-form");
+let optionsABV = "";
+let optionsIBU = "";
 
-testBtn.addEventListener('click', () => {
-    //need to figure out which one was selected!
-    console.log("test");
-    let ABVresult = abvForm.value;
-    console.log(ABVresult);
-    //then send off the fetch with the appropriate URL
-
-    //fetchMe('https://api.punkapi.com/v2/beers?abv_gt=0&abv_lt=2.5')
+//filters
+abvForm.addEventListener("change", e => {
+    const value = e.target.value;
+    switchOptions(value, optionsABV);
 });
+
+ibuForm.addEventListener("change", e => {
+    const value = e.target.value;
+    switchOptions(value, optionsIBU);
+});
+
+
+function switchOptions(value, options) {
+    switch (value) {
+        case "":
+            options = ""; //URL modifiers
+            break; 
+        case "low":
+            options = "";
+            break;
+        case "med":
+            options = "";
+            break;
+        case "high":
+            options = "";
+            break;
+    }
+}
 
 //let url ='https://api.punkapi.com/v2/beers/random'; //url will change depending on choice!
 
