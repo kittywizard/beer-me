@@ -9,43 +9,71 @@ const pageForm = document.getElementById("page-form");
 let optionsABV = "";
 let optionsIBU = "";
 
+let url ='https://api.punkapi.com/v2/beers/?'; //url will change depending on choice!
+
 //filters
 abvForm.addEventListener("change", e => {
-    const value = e.target.value;
+    let value = e.target.value;
     switchOptions(value, optionsABV);
 });
 
 ibuForm.addEventListener("change", e => {
-    const value = e.target.value;
+    let value = e.target.value;
     switchOptions(value, optionsIBU);
 });
 
-
+//might not work for both -- since i need specific URL edits
 function switchOptions(value, options) {
+    console.log("switch options is working");
     switch (value) {
-        case "":
-            options = ""; //URL modifiers
+        case "all":
+            if(options === optionsABV) {
+                //ABV
+                
+                options = "";
+            } else {
+                //IBU
+                options = "";
+            }
             break; 
         case "low":
-            options = "";
+            if(options === optionsABV) {
+                //ABV
+                options = "abv_lt=4.5";
+            } else {
+                //IBU
+                options = "ibu_lt=";
+            }
             break;
         case "med":
-            options = "";
+            if(options === optionsABV) {
+                //ABV
+                options = "";
+            } else {
+                //IBU
+                options = "";
+            }
             break;
         case "high":
-            options = "";
+            if(options === optionsABV) {
+                //ABV
+                options = "";
+            } else {
+                //IBU
+                options = "";
+            }
             break;
     }
 }
-
-//let url ='https://api.punkapi.com/v2/beers/random'; //url will change depending on choice!
 
 //testBtn.addEventListener('click', fetchMe);
 
 //will need multiple listeners on the various buttons chosen
     //ABV
-
     //IBU
+
+// TO DO:
+    // not all the beers have images - need a generic beer placeholder image
 
 async function fetchMe(url) {
 
