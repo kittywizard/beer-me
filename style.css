@@ -30,10 +30,10 @@ header {
     align-items: center;
 }
 
-#btn {
+.btn {
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
-    padding: 0.6em;
+    padding: 0.5em 0.8em;
     margin: 0.5em;
     border: unset;
     background-color: var(--green);
@@ -46,6 +46,10 @@ header {
     border-radius: 5px;
     padding: 1em;
     width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card {
@@ -53,6 +57,14 @@ header {
     flex-direction: row;
     align-items: baseline;
 }
+
+.beer-card {}
+
+.hide {
+    display: none;
+}
+
+
 /* typography */
 
 h4 {
@@ -63,5 +75,5 @@ h4 {
 /* images */
 
 .img-div {
-    height: 100px;
+    height: 15rem;
 }

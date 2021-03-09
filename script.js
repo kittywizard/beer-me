@@ -1,15 +1,34 @@
 const resultCard = document.getElementById('resultCard');
-const btn = document.getElementById('btn');
+const testBtn = document.getElementById('test-btn');
+const pages = document.querySelector(".page-card"); //for turning them on and off
 
-let url ='https://api.punkapi.com/v2/beers/random';
+//pull in the forms 
+const abvForm = document.getElementById("ABV-form");
+const ibuForm = document.getElementById("IBU-form");
+const pageForm = document.getElementById("page-form");
 
-btn.addEventListener('click', fetchMe);
+testBtn.addEventListener('click', () => {
+    //need to figure out which one was selected!
+    console.log("test");
+    let ABVresult = abvForm.value;
+    console.log(ABVresult);
+    //then send off the fetch with the appropriate URL
+
+    //fetchMe('https://api.punkapi.com/v2/beers?abv_gt=0&abv_lt=2.5')
+});
+
+//let url ='https://api.punkapi.com/v2/beers/random'; //url will change depending on choice!
+
+//testBtn.addEventListener('click', fetchMe);
 
 //will need multiple listeners on the various buttons chosen
     //ABV
+
     //IBU
 
-async function fetchMe() {
+async function fetchMe(url) {
+
+    pages.classList.toggle('hide');
 
     let fetchBeer = await fetch(url);
     let json = await fetchBeer.json();
@@ -39,6 +58,6 @@ async function fetchMe() {
 
     function createDiv(className) {
         let div = document.createElement('div');
-        div.classList.add(className);
+        div.classList.add("beer", className);
         return div;
     }

@@ -13,73 +13,75 @@
     </header>
 
     <main class="container">
+
         <section class="filters">
+            <!-- ABV -->
             <div class="card filter-card">
                     <h4>Alcohol Volume (ABV):</h4>
                     <form id="ABV-form">
                         <label for="allABV">
-                            <input type="radio" id="" name ="allABV" value="all">
+                            <input type="radio" id="allABV" name="ABV" value="all" checked>
                             All
                         </label>
                         <label for="lowABV">
-                            <input type="radio" id="" name ="lowABV" value="low">
+                            <input type="radio" id="lowABV" name="ABV" value="low">
                             Low ABV
                         </label>
                         <label for="medABV">
-                            <input type="radio" id="" name ="medABV" value="med">
+                            <input type="radio" id="medABV" name="ABV" value="med">
                             Medium ABV
                         </label>
                         <label for="highABV">
-                            <input type="radio" id="" name ="highABV" value="high">
+                            <input type="radio" id="highABV" name="ABV" value="high">
                             High ABV
                         </label>
                     </form>
             </div>
 
+            <!-- IBU -->
             <div class="card filter-card">
                 <h4>Hoppiness (IBU):</h4>
                 <form id="IBU-form">
                     <label for="allIBU">
-                        <input type="radio" id="" name ="allIBU" value="all">
+                        <input type="radio" id="allIBU" name ="IBU" value="all" checked>
                         All
                     </label>
                     <label for="lowIBU">
-                        <input type="radio" id="" name ="lowIBU" value="low">
+                        <input type="radio" id="lowIBU" name ="IBU" value="low">
                         <i class="fas fa-minus"></i>
                         <i class="fas fa-beer"></i>
                     </label>
                     <label for="medIBU">
-                        <input type="radio" id="" name ="medIBU" value="med">
+                        <input type="radio" id="medIBU" name ="IBU" value="med">
                         <i class="fas fa-beer"></i>
                     </label>
                     <label for="highIBU">
-                        <input type="radio" id="" name ="highIBU" value="high">
+                        <input type="radio" id="highIBU" name ="IBU" value="high">
                         <i class="fas fa-plus"></i>
                         <i class="fas fa-beer"></i>
                     </label>
                 </form>
             </div>
 
-            <div class="card filter-card">
-                <h4>Page:</h4>
+            <!-- Page -->
+            <div class="card filter-card hide page-card">
+                <h4>Page: </h4>
                 <form id="page-form">
-                    <label for="allIBU">
-                        <input type="button" id="" name ="allIBU" value="next">
-                        <i class="fas fa-arrow-circle-right"></i>
-                    </label>
-                    <label for="lowIBU">
-                        <input type="button" id="" name ="lowIBU" value="previous">
+                    <button id="previous-btn" class="btn" disabled>
                         <i class="fas fa-arrow-circle-left"></i>
-                    </label>
+                    </button>
+
+                    <button id="next-btn" class="btn" disabled>
+                        <i class="fas fa-arrow-circle-right"></i>
+                    </button>
                 </form>
             </div>
-            
         </section>
 
 
 
-        <section>
-            <button id="btn">Test Me</button>
+        <section class="results">
+            <button class="btn" id="test-btn">Test Me</button>
             <div id="resultCard">
                 
             </div>
