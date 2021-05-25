@@ -15,6 +15,7 @@ body {
 .container, header {
     width: 80%;
     margin: 0 auto;
+    max-width: 1000px;
 }
 
 header {
@@ -22,6 +23,19 @@ header {
     background-color: var(--green);
     padding: 0.5em;
     border-radius: 0 0 10px 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.filter-card {
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.31); 
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.31);
+    padding: 2em;
+    margin: 1em;
 }
 
 #resultCard {
@@ -46,19 +60,7 @@ header {
     border-radius: 5px;
     padding: 1em;
     width: fit-content;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
-
-.card {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-}
-
-.beer-card {}
 
 .hide {
     display: none;
@@ -76,4 +78,21 @@ h4 {
 
 .img-div {
     height: 15rem;
+}
+
+
+/* media */
+
+@media (min-width: 800px) {
+    .filters {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .filter-card {
+        padding: 0.5em;
+        margin: 0.3em;
+        align-items: center;
+    }
 }
