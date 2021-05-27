@@ -40,8 +40,26 @@ header {
 
 #resultCard {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: center;
+}
+
+
+.result-card {
+    border: 1px solid var(--green);
+    border-radius: 5px;
+    padding: 1em 2em;
+    margin: 1em;
+}
+
+.img-div {
+    height: 15rem;
+}
+
+
+.hide {
+    display: none;
 }
 
 .btn {
@@ -54,19 +72,6 @@ header {
     color: rgb(240, 239, 239);
     border-radius: 5px;
 }
-
-.result-card {
-    border: 1px solid var(--green);
-    border-radius: 5px;
-    padding: 1em;
-    width: fit-content;
-}
-
-.hide {
-    display: none;
-}
-
-
 /* typography */
 
 h4 {
@@ -74,11 +79,6 @@ h4 {
     font-size: 1rem; /* adjust font size later */
 }
 
-/* images */
-
-.img-div {
-    height: 15rem;
-}
 
 
 /* media */
