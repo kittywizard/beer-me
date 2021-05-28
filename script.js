@@ -1,4 +1,10 @@
-const resultCard = document.getElementById('resultCard');
+
+// TO DO:
+    // not all the beers have images - need a generic beer placeholder image
+    // set up function to fix the fetch call
+    // the UI 
+
+const resultCard = document.querySelector(".results");
 const testBtn = document.getElementById('test-btn');
 const pages = document.querySelector(".page-card"); //for turning them on and off
 
@@ -66,21 +72,12 @@ function switchOptions(value, options) {
     }
 }
 
-//will need multiple listeners on the various buttons chosen
-    //ABV
-    //IBU
-
-// TO DO:
-    // not all the beers have images - need a generic beer placeholder image
-
 async function fetchMe(url) {
 
-    pages.classList.toggle('hide');
+    //pages.classList.toggle('hide');
 
     let fetchBeer = await fetch(url);
     let json = await fetchBeer.json();
-
-    console.log(json);
 
     json.forEach(beer => {
 
@@ -113,4 +110,5 @@ async function fetchMe(url) {
         return div;
     }
 
+    //will have to call this by default, but then override it with whatever selectors the user chooses each time
     fetchMe(url);
