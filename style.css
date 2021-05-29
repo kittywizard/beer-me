@@ -1,18 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
 
 /* custom properties */
 
 :root {
     --green: rgba(18, 99, 31, 0.575);
+    --drk-green: rgba(18, 99, 31, 0.8);
+    --regular-text: 300;
+    --bold-text: 600;
+    --font: 'Raleway', sans-serif;
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 200;
+    font-family: var(--font);
+    font-weight: var(--regular-text);
     margin: 0;
+    background-color: rgba(243, 243, 243, 0.81);
 }
 
-.container, header {
+.container,
+header {
     width: 80%;
     margin: 0 auto;
     max-width: 1000px;
@@ -31,26 +37,27 @@ header {
     align-items: baseline;
 }
 
+.filter-card,
+.result-card {
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.21);
+    box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.21);
+    margin: 1em;
+    border-radius: 5px;
+}
+
 .filter-card {
-    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.31); 
-    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.31);
     padding: 2em;
-    margin: 12em;
+}
+
+.result-card {
+    padding: 1em 2em;
 }
 
 .results {
     display: grid;
     grid-template-columns: repeat(3, minmax(250px, 1fr));
     grid-gap: 0.25em;
-}
-
-
-.result-card {
-    border-radius: 5px;
-    padding: 1em 2em;
-    margin: 1em;
-    -webkit-box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.21); 
-    box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.21);
 }
 
 .img-div {
@@ -63,8 +70,8 @@ header {
 }
 
 .btn {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-family: var(--font);
+    font-weight: var(--bold-text);
     padding: 0.5em 0.8em;
     margin: 0.5em;
     border: unset;
@@ -72,11 +79,18 @@ header {
     color: rgb(240, 239, 239);
     border-radius: 5px;
 }
+
 /* typography */
 
 h4 {
     margin: 0.4em 0;
-    font-size: 1rem; /* adjust font size later */
+    font-size: 1rem;
+    /* adjust font size later */
+}
+
+strong {
+    font-weight: var(--bold-text);
+    color: var(--drk-green);
 }
 
 

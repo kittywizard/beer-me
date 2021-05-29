@@ -92,8 +92,9 @@ async function fetchMe(url) {
 
 
         //beer info and append all that into one card
-        cardDiv.textContent = `Your beer is: ${beer.name}, ${beer.tagline}`;
-        infoCard.textContent = `ABV: ${beer.abv} IBU: ${beer.ibu}`;
+        //cardDiv.textContent = `Your beer is: ${beer.name}, ${beer.tagline}`;
+        cardDiv.innerHTML = `Your beer is: <strong>${beer.name}</strong>, ${beer.tagline}`;
+        infoCard.innerHTML = `<strong>ABV:</strong> ${beer.abv} <strong>IBU:</strong> ${beer.ibu}`;
         cardDiv.appendChild(infoCard);
         cardDiv.appendChild(img);
 
