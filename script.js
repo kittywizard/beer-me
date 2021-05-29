@@ -31,9 +31,10 @@ ibuForm.addEventListener("change", e => {
 });
 
 function switchOptions(name, value, options) {
-    //need to determine which option was clicked - ABV or IBU
-    //use name to determine abv or ibu and then run the switch
-
+    //need to find a way to account for someone choosing an ABV and an IBU option
+    //but also need to clear out the options if someone wants to go back and choose a different ABV/IBU option
+    //then still need to call the fetch to display new results
+    
     switch (value) {
         case "all":
             if(name === "ABV") {
@@ -47,37 +48,39 @@ function switchOptions(name, value, options) {
         case "low":
             if(name === "ABV") {
                 //ABV
-                options += "abv_lt=4.5";
+                options += "?abv_lt=4.5";
             } else {
                 //IBU
-                options += "ibu_lt=30";
+                options += "?ibu_lt=30";
             }
             break;
         case "med":
             if(name === "ABV") {
                 //ABV
-                options += "abv_lt=6.5&abv_gt=4.5";
+                options += "?abv_lt=6.5&abv_gt=4.5";
             } else {
                 //IBU
-                options += "ibu_lt=50&ibu_gt=30";
+                options += "?ibu_lt=50&ibu_gt=30";
             }
             break;
         case "high":
             if(name === "ABV") {
                 //ABV
-                options += "abv_gt=6.5";
+                options += "?abv_gt=6.5";
             } else {
                 //IBU
-                options += "ibu_gt=50";
+                options += "?ibu_gt=50";
             }
             break;
     }
-
-    console.log(options);
+    //need to check the url - first one is a question mark, the rest need to be &
+    url += options;
+    fetchMe(url);
 }
 
 async function fetchMe(url) {
 
+    resultCard.innerHTML = '';
     //pages.classList.toggle('hide');
 
     let fetchBeer = await fetch(url);
