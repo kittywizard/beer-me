@@ -1,8 +1,7 @@
-
 // TO DO:
-    // not all the beers have images - need a generic beer placeholder image
-    // set up function to fix the fetch call
-    // the UI 
+// not all the beers have images - need a generic beer placeholder image
+// set up function to fix the fetch call
+// the UI 
 
 const resultCard = document.querySelector(".results");
 const testBtn = document.getElementById('test-btn');
@@ -15,7 +14,11 @@ const pageForm = document.getElementById("page-form");
 let optionsABV = "";
 let optionsIBU = "";
 
-let url ='https://api.punkapi.com/v2/beers'; //url will change depending on choice!
+//array for favoriting
+let beerCollection = [];
+let favCollection = [];
+
+let url = 'https://api.punkapi.com/v2/beers?'; //url will change depending on choice!
 
 //filters
 abvForm.addEventListener("change", e => {
@@ -30,50 +33,47 @@ ibuForm.addEventListener("change", e => {
     switchOptions(name, value, optionsIBU);
 });
 
+
 function switchOptions(name, value, options) {
-    //need to find a way to account for someone choosing an ABV and an IBU option
-    //but also need to clear out the options if someone wants to go back and choose a different ABV/IBU option
-    //then still need to call the fetch to display new results
-    
+
     switch (value) {
         case "all":
-            if(name === "ABV") {
+            if (name === "ABV") {
                 //ABV
                 options = "";
             } else {
                 //IBU
                 options = "";
             }
-            break; 
+            break;
         case "low":
-            if(name === "ABV") {
+            if (name === "ABV") {
                 //ABV
-                options += "?abv_lt=4.5";
+                options += "&abv_lt=4.5";
             } else {
                 //IBU
-                options += "?ibu_lt=30";
+                options += "&ibu_lt=30";
             }
             break;
         case "med":
-            if(name === "ABV") {
+            if (name === "ABV") {
                 //ABV
-                options += "?abv_lt=6.5&abv_gt=4.5";
+                options += "&abv_lt=6.5&abv_gt=4.5";
             } else {
                 //IBU
-                options += "?ibu_lt=50&ibu_gt=30";
+                options += "&ibu_lt=50&ibu_gt=30";
             }
             break;
         case "high":
-            if(name === "ABV") {
+            if (name === "ABV") {
                 //ABV
-                options += "?abv_gt=6.5";
+                options += "&abv_gt=6.5";
             } else {
                 //IBU
-                options += "?ibu_gt=50";
+                options += "&ibu_gt=50";
             }
             break;
     }
-    //need to check the url - first one is a question mark, the rest need to be &
     url += options;
     fetchMe(url);
 }
@@ -95,28 +95,49 @@ async function fetchMe(url) {
         let img = document.createElement('img');
         img.src = beer.image_url;
         img.classList.add('img-div');
-        cardDiv.appendChild(img);
 
 
         //beer info and append all that into one card
-        //cardDiv.textContent = `Your beer is: ${beer.name}, ${beer.tagline}`;
-        cardDiv.innerHTML = `Your beer is: <strong>${beer.name}</strong>, ${beer.tagline}`;
+        cardDiv.innerHTML = `<i class="far fa-heart favorite"></i>
+                             Your beer is: <strong>${beer.name}</strong>, ${beer.tagline}`;
         infoCard.innerHTML = `<strong>ABV:</strong> ${beer.abv} <strong>IBU:</strong> ${beer.ibu}`;
         cardDiv.appendChild(infoCard);
         cardDiv.appendChild(img);
 
-
         resultCard.appendChild(cardDiv);
+
+        beerCollection.push(beer.name);
     });
 
-    }
+    let favorite = document.querySelectorAll(".favorite");
 
-    //create all the beer card elements
-    function createDiv(className) {
-        let div = document.createElement('div');
-        div.classList.add("beer", className);
-        return div;
-    }
+    //fas = solid heart, like
+    //far = outline, remove from storage
 
-    //will have to call this by default, but then override it with whatever selectors the user chooses each time
-    fetchMe(url);
+    favorite.forEach((fav, index) => {
+        fav.addEventListener('click', () => {
+            fav.classList.toggle('fas');
+            fav.classList.toggle('far');
+            if (fav.classList.contains('fas')) {
+                favCollection.push(beerCollection[index]);
+               localStorage.setItem('favorite', JSON.stringify(favCollection));
+                //add to local storage
+            } else {
+
+                //remove from storage
+            }
+
+        });
+    });
+    console.log(localStorage)
+}
+
+//create all the beer card elements
+function createDiv(className) {
+    let div = document.createElement('div');
+    div.classList.add("beer", className);
+    return div;
+}
+
+//will have to call this by default, but then override it with whatever selectors the user chooses each time
+fetchMe(url);

@@ -80,6 +80,16 @@ header {
     border-radius: 5px;
 }
 
+.fas,
+.far {
+    color: var(--drk-green);
+}
+
+.favorite {
+    padding: 0.5em;
+    margin: 0.2em;
+}
+
 /* typography */
 
 h4 {
