@@ -20,22 +20,24 @@ let url ='https://api.punkapi.com/v2/beers'; //url will change depending on choi
 //filters
 abvForm.addEventListener("change", e => {
     let value = e.target.value;
-    switchOptions(value, optionsABV);
+    let name = e.target.name;
+    switchOptions(name, value, optionsABV);
 });
 
 ibuForm.addEventListener("change", e => {
     let value = e.target.value;
-    switchOptions(value, optionsIBU);
+    let name = e.target.name;
+    switchOptions(name, value, optionsIBU);
 });
 
-//might not work for both -- since i need specific URL edits
-function switchOptions(value, options) {
-    console.log("switch options is working");
+function switchOptions(name, value, options) {
+    //need to determine which option was clicked - ABV or IBU
+    //use name to determine abv or ibu and then run the switch
+
     switch (value) {
         case "all":
-            if(options === optionsABV) {
+            if(name === "ABV") {
                 //ABV
-                
                 options = "";
             } else {
                 //IBU
@@ -43,33 +45,35 @@ function switchOptions(value, options) {
             }
             break; 
         case "low":
-            if(options === optionsABV) {
+            if(name === "ABV") {
                 //ABV
-                options = "abv_lt=4.5";
+                options += "abv_lt=4.5";
             } else {
                 //IBU
-                options = "ibu_lt=";
+                options += "ibu_lt=30";
             }
             break;
         case "med":
-            if(options === optionsABV) {
+            if(name === "ABV") {
                 //ABV
-                options = "";
+                options += "abv_lt=6.5&abv_gt=4.5";
             } else {
                 //IBU
-                options = "";
+                options += "ibu_lt=50&ibu_gt=30";
             }
             break;
         case "high":
-            if(options === optionsABV) {
+            if(name === "ABV") {
                 //ABV
-                options = "";
+                options += "abv_gt=6.5";
             } else {
                 //IBU
-                options = "";
+                options += "ibu_gt=50";
             }
             break;
     }
+
+    console.log(options);
 }
 
 async function fetchMe(url) {
