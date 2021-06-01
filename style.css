@@ -90,7 +90,7 @@ header {
     margin: 0.2em;
 }
 
-.favorite-list {
+#fav-list {
     background-color: cornsilk;
     padding: 1em;
     margin: 1em auto;

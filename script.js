@@ -6,6 +6,8 @@
 const resultCard = document.querySelector(".results");
 const testBtn = document.getElementById('test-btn');
 const pages = document.querySelector(".page-card"); //for turning them on and off
+const favList = document.getElementById('fav-list');
+const favUL = document.querySelector('.fav-ul');
 
 //forms and form related nonsense
 const abvForm = document.getElementById("ABV-form");
@@ -119,13 +121,12 @@ async function fetchMe(url) {
         beerCollection.push(beer.name);
     });
 
+    //gather all the hearts 
     let favorite = document.querySelectorAll(".favorite");
-
-    //create favorite modal 
-    //remove the hide class - but only when the clicked
 
     //fas = solid heart, like
     //far = outline, remove from storage
+
 
     favorite.forEach((fav, index) => {
         fav.addEventListener('click', () => {
@@ -134,6 +135,8 @@ async function fetchMe(url) {
             if (fav.classList.contains('fas')) {
                 favCollection.push(beerCollection[index]);
                 localStorage.setItem('favorite', JSON.stringify(favCollection[index]));
+                createModal(favCollection[index]); //probably need to add parameters to this
+
                 //add to local storage
             } else {
                 //remove from storage
@@ -147,6 +150,13 @@ async function fetchMe(url) {
         });
     });
     console.log(localStorage);
+}
+
+function createModal(item) {
+    favList.classList.remove('hide');
+    let list = document.createElement('li');
+    list.textContent = item;
+    favUL.append(list);
 }
 
 //create all the beer card elements
