@@ -78,7 +78,17 @@ function switchOptions(name, value, options) {
     fetchMe(url);
 }
 
+function clearStorage() {
+    //delete everything from local storage on page load for testing purposes
+    //need to see if adding things works correctly!
+    localStorage.clear();
+}
+
 async function fetchMe(url) {
+    //clear local storage first - for testing purposes only
+    //but will need it later on, for clearing out the favorites list!
+
+    clearStorage();
 
     resultCard.innerHTML = '';
     //pages.classList.toggle('hide');
@@ -111,6 +121,9 @@ async function fetchMe(url) {
 
     let favorite = document.querySelectorAll(".favorite");
 
+    //create favorite modal 
+    //remove the hide class - but only when the clicked
+
     //fas = solid heart, like
     //far = outline, remove from storage
 
@@ -120,16 +133,20 @@ async function fetchMe(url) {
             fav.classList.toggle('far');
             if (fav.classList.contains('fas')) {
                 favCollection.push(beerCollection[index]);
-               localStorage.setItem('favorite', JSON.stringify(favCollection));
+                localStorage.setItem('favorite', JSON.stringify(favCollection[index]));
                 //add to local storage
             } else {
-
                 //remove from storage
+
+                //check to see if it's in the list
+                //then pop it out of the array
+
+                //eventually remove it from the display modal
             }
 
         });
     });
-    console.log(localStorage)
+    console.log(localStorage);
 }
 
 //create all the beer card elements

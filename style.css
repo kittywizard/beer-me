@@ -90,6 +90,14 @@ header {
     margin: 0.2em;
 }
 
+.favorite-list {
+    background-color: cornsilk;
+    padding: 1em;
+    margin: 1em auto;
+    width: 90%;
+    border-radius: 50px;
+}
+
 /* typography */
 
 h4 {
