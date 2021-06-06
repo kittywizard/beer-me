@@ -131,14 +131,17 @@ async function fetchMe(url) {
         fav.addEventListener('click', () => {
             fav.classList.toggle('fas');
             fav.classList.toggle('far');
+
             if (fav.classList.contains('fas')) {
                 favCollection.push(beerCollection[index]);
                 
                 //local storage key pair needs to be unique
                 localStorage.setItem(`${index} favorite`, JSON.stringify(favCollection[index]));
 
-                createModal(favCollection[index]); //probably need to add parameters to this
+                createModal(favCollection[index]); 
+                
                 console.log(localStorage);
+                console.log(favCollection);
 
             } else {
                 //remove from storage
@@ -146,7 +149,9 @@ async function fetchMe(url) {
                 console.log(localStorage);
 
                 //check to see if it's in the list
-                //then pop it out of the array
+                //then splice it out of the array
+                favCollection.splice(index, 1);
+                console.log(favCollection);
 
                 //eventually remove it from the display modal
             }
