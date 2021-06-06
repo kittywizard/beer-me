@@ -127,19 +127,23 @@ async function fetchMe(url) {
     //fas = solid heart, like
     //far = outline, remove from storage
 
-
     favorite.forEach((fav, index) => {
         fav.addEventListener('click', () => {
             fav.classList.toggle('fas');
             fav.classList.toggle('far');
             if (fav.classList.contains('fas')) {
                 favCollection.push(beerCollection[index]);
-                localStorage.setItem('favorite', JSON.stringify(favCollection[index]));
-                createModal(favCollection[index]); //probably need to add parameters to this
+                
+                //local storage key pair needs to be unique
+                localStorage.setItem(`${index} favorite`, JSON.stringify(favCollection[index]));
 
-                //add to local storage
+                createModal(favCollection[index]); //probably need to add parameters to this
+                console.log(localStorage);
+
             } else {
                 //remove from storage
+                localStorage.removeItem(`${index} favorite`);
+                console.log(localStorage);
 
                 //check to see if it's in the list
                 //then pop it out of the array
@@ -149,9 +153,9 @@ async function fetchMe(url) {
 
         });
     });
-    console.log(localStorage);
 }
 
+//unhides and adds to the favorites list displayed at the top of the screen
 function createModal(item) {
     favList.classList.remove('hide');
     let list = document.createElement('li');
