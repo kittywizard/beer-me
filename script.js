@@ -136,24 +136,21 @@ async function fetchMe(url) {
                 favCollection.push(beerCollection[index]);
                 
                 //local storage key pair needs to be unique
-                localStorage.setItem(`${index} favorite`, JSON.stringify(favCollection[index]));
+                localStorage.setItem(`${index} favorite`, JSON.stringify(beerCollection[index]));
 
-                createModal(favCollection[index]); 
-                
-                console.log(localStorage);
-                console.log(favCollection);
+                createModal(beerCollection[index]); 
 
             } else {
                 //remove from storage
                 localStorage.removeItem(`${index} favorite`);
-                console.log(localStorage);
 
-                //check to see if it's in the list
                 //then splice it out of the array
                 favCollection.splice(index, 1);
                 console.log(favCollection);
 
                 //eventually remove it from the display modal
+                    //need to find the specific li - does this need to be an array too? 
+                    //beerCollection[index] would give the copy needed to find/filter?
             }
 
         });
