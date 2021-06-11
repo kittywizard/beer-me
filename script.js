@@ -20,6 +20,7 @@ let optionsIBU = "";
 let beerCollection = [];
 let favCollection = [];
 
+
 let url = 'https://api.punkapi.com/v2/beers?'; //url will change depending on choice!
 
 //filters
@@ -144,6 +145,18 @@ async function fetchMe(url) {
                 //remove from storage
                 localStorage.removeItem(`${index} favorite`);
 
+                let li = document.getElementsByTagName('li');
+                console.log(li)
+
+                for(let i = 0; i < li.length; i++) {
+                    if (li.innerText == beerCollection[index]) {
+                        console.log(li);
+                        li[index].remove();
+                    }
+                }
+
+ 
+
                 //then splice it out of the array
                 favCollection.splice(index, 1);
                 console.log(favCollection);
@@ -151,6 +164,7 @@ async function fetchMe(url) {
                 //eventually remove it from the display modal
                     //need to find the specific li - does this need to be an array too? 
                     //beerCollection[index] would give the copy needed to find/filter?
+                
             }
 
         });
