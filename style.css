@@ -63,6 +63,7 @@ header {
 .img-div {
     height: 15rem;
     order: 1;
+    padding-top: 0.5em;
 }
 
 .hide {
@@ -87,7 +88,7 @@ header {
 
 .favorite {
     padding: 0.5em;
-    margin: 0.2em;
+    margin: 0.2em 0;
 }
 
 #fav-list {
