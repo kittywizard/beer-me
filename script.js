@@ -146,25 +146,16 @@ async function fetchMe(url) {
                 localStorage.removeItem(`${index} favorite`);
 
                 let li = document.getElementsByTagName('li');
-                console.log(li)
 
                 for(let i = 0; i < li.length; i++) {
-                    if (li.innerText == beerCollection[index]) {
-                        console.log(li);
-                        li[index].remove();
-                    }
+                    if (li[i].innerText === beerCollection[index])  li[i].remove();
                 }
-
- 
 
                 //then splice it out of the array
                 favCollection.splice(index, 1);
-                console.log(favCollection);
 
-                //eventually remove it from the display modal
-                    //need to find the specific li - does this need to be an array too? 
-                    //beerCollection[index] would give the copy needed to find/filter?
-                
+                //need to check and remove the modal if there's no li children in the UL
+                if(li.length == 0) favList.classList.add('hide');
             }
 
         });
