@@ -94,6 +94,8 @@ async function fetchMe(url) {
     clearStorage();
 
     resultCard.innerHTML = '';
+    favCollection = [];
+    beerCollection = [];
     //pages.classList.toggle('hide');
 
     let fetchBeer = await fetch(url);
@@ -122,6 +124,26 @@ async function fetchMe(url) {
         beerCollection.push(beer.name);
     });
 
+    favoriteSystem();
+
+}
+
+//unhides and adds to the favorites list displayed at the top of the screen
+function createModal(item) {
+    favList.classList.remove('hide');
+    let list = document.createElement('li');
+    list.textContent = item;
+    favUL.append(list);
+}
+
+//create all the beer card elements
+function createDiv(className) {
+    let div = document.createElement('div');
+    div.classList.add("beer", className);
+    return div;
+}
+
+function favoriteSystem() {
     //gather all the hearts 
     let favorite = document.querySelectorAll(".favorite");
 
@@ -160,21 +182,6 @@ async function fetchMe(url) {
 
         });
     });
-}
-
-//unhides and adds to the favorites list displayed at the top of the screen
-function createModal(item) {
-    favList.classList.remove('hide');
-    let list = document.createElement('li');
-    list.textContent = item;
-    favUL.append(list);
-}
-
-//create all the beer card elements
-function createDiv(className) {
-    let div = document.createElement('div');
-    div.classList.add("beer", className);
-    return div;
 }
 
 //will have to call this by default, but then override it with whatever selectors the user chooses each time
