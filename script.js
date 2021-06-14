@@ -88,10 +88,6 @@ function clearStorage() {
 }
 
 async function fetchMe(url) {
-    //clear local storage first - for testing purposes only
-    //but will need it later on, for clearing out the favorites list!
-
-    clearStorage();
 
     resultCard.innerHTML = '';
     favCollection = [];
@@ -114,7 +110,7 @@ async function fetchMe(url) {
 
         //beer info and append all that into one card
         cardDiv.innerHTML = `<i class="far fa-heart favorite"></i>
-                            <br> Your beer is: <strong>${beer.name}</strong>, ${beer.tagline}`;
+                            <br> <span class="beer-name"><strong class="bold-beer">${beer.name}</strong> <br> ${beer.tagline}</span>`;
         infoCard.innerHTML = `<strong>ABV:</strong> ${beer.abv} <strong>IBU:</strong> ${beer.ibu}`;
         cardDiv.appendChild(infoCard);
         cardDiv.appendChild(img);
