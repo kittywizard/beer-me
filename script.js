@@ -1,7 +1,4 @@
-// TO DO:
-// not all the beers have images - need a generic beer placeholder image
-// set up function to fix the fetch call
-// the UI 
+ 
 
 const resultCard = document.querySelector(".results");
 const testBtn = document.getElementById('test-btn');
