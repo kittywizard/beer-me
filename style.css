@@ -188,13 +188,13 @@ strong {
     .result-card {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        
+        justify-content: flex-start;
 
     }
 
     .img-div {
        max-height: 300px;
        object-fit: scale-down;
+       align-content: flex-end;
     }
 }
